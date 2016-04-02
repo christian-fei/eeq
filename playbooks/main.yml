@@ -5,3 +5,16 @@
     - resmo.ntp
     - geerlingguy.firewall
     - angstwad.docker_ubuntu
+    - elk
+  post_tasks:
+    - name: elk
+      docker:
+        name: elk
+        image: sebp/elk
+        state: reloaded
+        pull: always
+        ports:
+          - "5601:5601"
+          - "9200:9200"
+          - "5044:5044"
+          - "5000:5000"
